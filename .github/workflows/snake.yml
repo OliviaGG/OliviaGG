@@ -1,10 +1,42 @@
-            - name: Generate-README.md-snake
-  # You may pin to the exact commit or the version.
-  # uses: InvalidLenni/README.md@a89878f85b1cca8131c215dbfb4ad7bcdb6b9b9f
-  uses: InvalidLenni/README.md@Template
-  with:
-    # <USERNAME>
-    github_user_name: OliviaGG
-    # <PATH OF THE GENERATED SVG FILE>
-    svg_out_path: 
+name: Generate Snake Animation and README
+
+on:
+  schedule: # Execute every 12 hours
+    - cron: "* */12 * * *"
+  workflow_dispatch: # Allows manual triggering of the workflow
+  push:
+    branches:
+      - main  # Change this to 'master' if your main branch is actually named 'master'
+
+jobs:
+  generate:
+    permissions:
+      contents: write  # Grants write permissions for this job
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Checkout the repository
+
+      - name: Generate snake.svg
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}  # Uses the owner of the repository
+          outputs: dist/snake.svg?palette=github-dark  # Generates the snake SVG with dark palette
+
+      - name: Generate README.md with Snake
+        uses: InvalidLenni/README.md@Template
+        with:
+          github_user_name: OliviaGG  # Your GitHub username
+          svg_out_path: dist/snake.svg  # Path to the generated snake SVG file
+
+      - name: Push README.md to the main branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: main  # Change to 'master' if applicable
+          build_dir: .  # Push README.md from the root directory
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Uses the GitHub token to authenticate
+
           
