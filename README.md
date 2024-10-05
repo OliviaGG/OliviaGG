@@ -4,6 +4,12 @@
 - Peruvian-American Autistic Coder
 - Contact me at [OliviaGarciaGodos@Gmail.com](mailto:OliviaGarciaGodos@Gmail.Com)
 - Beginner coder majoring in 🧠 Neuroscience & 💻 BioInformatics
+
+## 🐍 Contribution Snake Game
+
+![GitHub Snake Light](https://github.com/OliviaGGE/OliviaGG/blob/output/github-contribution-grid-snake.svg#gh-light-mode-only)
+<!--![GitHub Snake Dark](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/blob/output/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)-->
+
 <!--
 **OliviaGG/OliviaGG** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
