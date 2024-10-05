@@ -17,6 +17,6 @@ jobs:
       - name: Generate contribution snake
         uses: platane/snk@v2.0.0
         with:
-          github_user: OliviaGG
-          svg_out: output/github-contribution-grid-snake.svg
-          dark_svg_out: output/github-contribution-grid-snake-dark.svg
+          github_user_name: OliviaGG   # Change this line
+          outputs: output/github-contribution-grid-snake.svg   # Add this line
+          dark_svg_out: output/github-contribution-grid-snake-dark.svg   # If valid
