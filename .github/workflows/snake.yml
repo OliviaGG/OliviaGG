@@ -1,22 +1,10 @@
-name: Generate Snake
-
-on:
-  schedule:
-    - cron: '0 0 * * *' # Run daily
-  push:
-    branches:
-      - main
-
-jobs:
-  generate-snake:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Generate contribution snake
-        uses: platane/snk@v2.0.0
-        with:
-          github_user_name: OliviaGG   # Change this line
-          outputs: output/github-contribution-grid-snake.svg   # Add this line
-          dark_svg_out: output/github-contribution-grid-snake-dark.svg   # If valid
+            - name: Generate-README.md-snake
+  # You may pin to the exact commit or the version.
+  # uses: InvalidLenni/README.md@a89878f85b1cca8131c215dbfb4ad7bcdb6b9b9f
+  uses: InvalidLenni/README.md@Template
+  with:
+    # <USERNAME>
+    github_user_name: OliviaGG
+    # <PATH OF THE GENERATED SVG FILE>
+    svg_out_path: 
+          
