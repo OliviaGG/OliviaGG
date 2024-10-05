@@ -1,5 +1,9 @@
-## Hi there 👋
+## Olivia Garcia-Godos Martinez 👩🏽‍💻
 
+- Pronouns: She/Her
+- Peruvian-American Autistic Coder
+- Contact me at [OliviaGarciaGodos@Gmail.com](mailto:OliviaGarciaGodos@Gmail.Com)
+- Beginner coder majoring in 🧠 Neuroscience & 💻 BioInformatics
 <!--
 **OliviaGG/OliviaGG** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
