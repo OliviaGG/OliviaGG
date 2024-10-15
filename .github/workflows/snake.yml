@@ -8,7 +8,7 @@ on:
 
   push:
     branches:
-    - master  # or 'main' depending on your branch
+    - main  # or 'main' depending on your branch
 
 jobs:
   generate:
