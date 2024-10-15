@@ -1,40 +1,44 @@
-name: Generate Snake Animation and README
+name: Generate Snake Animation
 
 on:
-  schedule: # Execute every 12 hours
+  schedule:
+    # Run the workflow every 12 hours
     - cron: "0 */12 * * *"
-  workflow_dispatch: # Allows manual triggering of the workflow
+
+  workflow_dispatch:  # Manual trigger
+
   push:
     branches:
-      - main  # Change this to 'master' if your main branch is named 'master'
+      - master  # Ensure this is the branch where you want the workflow to trigger
 
 jobs:
   generate:
     permissions:
-      contents: write  # Grants write permissions for this job
+      contents: write  # Grant write permission
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
+      # Checkout the repository
       - name: Checkout repository
-        uses: actions/checkout@v2  # Checkout the repository
+        uses: actions/checkout@v2
 
+      # Generate the snake.svg
       - name: Generate snake.svg
-        uses: Platane/snk@v2
+        uses: Platane/snk/svg-only@v3
         with:
-          github_user_name: ${{ github.repository_owner }}  # Uses the owner of the repository
-          outputs: dist/snake.svg  # Generates the snake SVG with dark palette
+          github_user_name: ${{ github.repository_owner }}  # Replace with your GitHub username
+          outputs: dist/snake.svg?palette=github-dark  # Ensure this path is correct
 
-      - name: Add snake.svg to README
-        run: |
-          echo "![snake gif](./dist/snake.svg)" >> README.md
+      # List files in the output directory (debugging step)
+      - name: List output files
+        run: ls -R dist
 
-      - name: Commit changes
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git add README.md
-          git commit -m "Update README with snake animation"
-          git push
+      # Push the generated snake.svg to the output branch
+      - name: Push snake.svg to the output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output  # Branch to push to
+          build_dir: dist  # Directory containing snake.svg
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
