@@ -2,11 +2,11 @@ name: Generate Snake Animation and README
 
 on:
   schedule: # Execute every 12 hours
-    - cron: "* */12 * * *"
+    - cron: "0 */12 * * *"
   workflow_dispatch: # Allows manual triggering of the workflow
   push:
     branches:
-      - main  # Change this to 'master' if your main branch is actually named 'master'
+      - main  # Change this to 'master' if your main branch is named 'master'
 
 jobs:
   generate:
@@ -20,23 +20,21 @@ jobs:
         uses: actions/checkout@v2  # Checkout the repository
 
       - name: Generate snake.svg
-        uses: Platane/snk/svg-only@v3
+        uses: Platane/snk@v2
         with:
           github_user_name: ${{ github.repository_owner }}  # Uses the owner of the repository
-          outputs: dist/snake.svg?palette=github-dark  # Generates the snake SVG with dark palette
+          outputs: dist/snake.svg  # Generates the snake SVG with dark palette
 
-      - name: Generate README.md with Snake
-        uses: InvalidLenni/README.md@Template
-        with:
-          github_user_name: OliviaGG  # Your GitHub username
-          svg_out_path: dist/snake.svg  # Path to the generated snake SVG file
+      - name: Add snake.svg to README
+        run: |
+          echo "![snake gif](./dist/snake.svg)" >> README.md
 
-      - name: Push README.md to the main branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
-        with:
-          target_branch: main  # Change to 'master' if applicable
-          build_dir: .  # Push README.md from the root directory
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add README.md
+          git commit -m "Update README with snake animation"
+          git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Uses the GitHub token to authenticate
-
-          
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
