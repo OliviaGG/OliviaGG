@@ -6,7 +6,7 @@
 - Beginner coder majoring in 🧠 Neuroscience & 💻 BioInformatics
 
 ## 🐍 Contribution Snake Game
-![Snake animation](https://github.com/OliviaGG/OliviaGG/blob/output/snake.svg)
+![Snake animation](https://github.com/OliviaGG/OliviaGG/blob/output/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)
 
 <!--![GitHub Snake Dark](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/blob/output/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)-->
 
